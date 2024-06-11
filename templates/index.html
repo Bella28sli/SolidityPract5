@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>OAIPsite</title>
+        <!-- <link rel="stylesheet" href="./style.css"> -->
+    </head>
+
+    <body class="text">
+        <h1>Добро пожаловать!</h1>
+        <p>Чтобы начать работу войдите или зарегестрруйтесь</p>
+
+        <form method="post">
+            <input type="text" name="address" placeholder="Enter your address"/>
+            <input type="text" name="password" placeholder="Enter your password"/>
+            <button type="submit" name = "button" value="sign up">Зарегестрироваться</button>
+            <button type="submit" name = "button" value="sign in">Войти</button>
+            {% if error %}
+                <p style="color: red">{{ error }}</p>
+            {% endif %}
+        </form>
+
+        {% if new_address %}
+         <p>{{ new_address }}</p>
+        {% endif %}
+    </body>
+</html>

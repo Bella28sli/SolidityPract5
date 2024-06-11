@@ -1,0 +1,15 @@
+0xfe1Bad16A2b0897d90980CF9aCF9E83Aa673586D
+0x88c5c5F18C36440c245B1b80B4880B7720616155
+0xa352Cad1Af4543a80630f8A702b822C6ECA8b95d
+0x42Dd9B6F492F5600Dcd3082235E5333721A08E52
+0x97aAf8aA1002C17381B13C73a47213bc2A6D748C
+
+
+geth account new --datadir data - создание нового аккаунта, дальше вручную создаём генезис
+geth init --datadir data genesis.json - создание генезис блока
+
+geth --datadir data --networkid 12345 --unlock 0xfe1Bad16A2b0897d90980CF9aCF9E83Aa673586D --allow-insecure-unlock --http --http.corsdomain="*" --http.api web3,eth,debug,personal,net,miner --miner.etherbase 0xfe1Bad16A2b0897d90980CF9aCF9E83Aa673586D - запуск чатсной сети блокчейна
+geth attach --datadir data ipc:\\.\pipe\geth.ipc - создание отдельной консоли geth для того, чтобы управлять процессами в блокчейне, проверяем майнера
+    eth.blockNumber - номер блока
+дальше создаём файл конфигурации, куда подрубаем адрес деплоя и абишку из ремикса. Там заранее среду поставить на кастомную и любую другую evm 
+после этого можно создавать главный файл питона и писать там логику

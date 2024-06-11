@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>OAIPsite</title>
+        <!-- <link rel="stylesheet" href="./style.css"> -->
+    </head>
+
+    <body class="enter">
+        <form method="post">
+            <button type="submit" name="act_button" value="get_contract_balance">Проверить баланс смарт-контракта</button>
+            <button type="submit" name="act_button" value="get_account_balance">Проверить баланс аккаунта</button>
+            <button type="submit" name="act_button" value="withdraw">Снять</button>
+            <button type="submit" name="act_button" value="replenishment">Пополнить</button>
+            <button type="submit" name="act_button" value="get_estates">Просмотреть недвижимость</button>
+            <button type="submit" name="act_button" value="createEstate">Зарегестрировать недвижимость</button>
+            <button type="submit" name="act_button" value="statusEstate">Сменить статус недвижимости</button>
+            <button type="submit" name="act_button" value="sellEstate">Купить недвижимость</button>
+            <button type="submit" name="act_button" value="get_ads">Просмотреть объявления</button>
+            <button type="submit" name="act_button" value="createAd">Создать объявление</button>
+            <button type="submit" name="act_button" value="statusAD">Сменить статус объявления</button>
+            <button type="submit" name="act_button" value="return">Вернуться</button>
+        </form>
+        {% if error %} 
+        <h2>{{ error }}</h2>
+        {% endif %}
+
+        {% if approved %} 
+        <h2>{{ approved }}</h2>
+        {% endif %}
+
+        {% if choice == 'get_estates' %}
+            {% for i in estates %}
+                <p>{{i[0]}}</p>
+                <p>{{i[1]}}</p>
+                <p>{{i[2]}}</p>
+                <p>{{i[3]}}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% if choice == 'get_ads' %}
+            {% for i in ads %}
+            <p>{{i[0]}}</p>
+            <p>{{i[1]}}</p>
+            <p>{{i[2]}}</p>
+            <p>{{i[3]}}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% if choice == 'withdraw' %}
+        <form method="post">
+            <input type="text" name="value" placeholder="Введите сумму">
+            <button type="submit" name="act_button" value="withdraw_result">Снять</button>
+        </form>
+        {% endif %}
+
+        {% if choice =='replenishment' %}
+        <form method="post">
+            <input type="text" name="value" placeholder="Введите сумму">
+            <button type="submit" name="act_button" value="replenishment_result">Пополнить</button>
+        </form>
+        {% endif %}
+
+        {% if choice =='sellEstate' %}
+        <form method="post">
+            <input type="text" name="estateId" placeholder="Введите номер недвижимости">
+            <button type="submit" name="act_button" value="sellEstate_result">Купить недвижимость</button>
+        </form>
+        {% endif %}
+
+        {% if choice =='statusEstate' %}
+        <form method="post">
+            <input type="text" name="estateId" placeholder="Введите номер недвижимости">
+            <button type="submit" name="act_button" value="statusEstate_result">Сменить статус недвижимости</button>
+        </form>
+        {% endif %}
+
+        {% if choice == 'createEstate' %}
+        <form method="post">
+            <input type="text" name="address" placeholder="Введите адрес недвижимости">
+            <input type="text" name="area" placeholder="Введите площадь недвижимости">
+            <input type="text" name="type" placeholder="Введите тип недвижимости">
+            <button type="submit" name="act_button" value="createEstate_result">Зарегестрировать недвижимость</button>
+        </form>
+        {% endif %}
+
+        {% if choice =='statusAD' %}
+        <form method="post">
+            <input type="text" name="adId" placeholder="Введите номер объявления">
+            <button type="submit" name="act_button" value="statusAD_result">Сменить статус объявления</button>
+        </form>
+        {% endif %}
+
+        {% if choice == 'createAd' %}
+        <form method="post">
+            <input type="text" name="estateId" placeholder="Введите номер недвижимости">
+            <input type="text" name="cost" placeholder="Введите цену недвижимости">
+            <input type="text" name="buyer" placeholder="Введите адрес покупателя">
+            <input type="text" name="date" placeholder="Введите дату">
+            <button type="submit" name="act_button" value="createAD_result">Создать объявление</button>
+        </form>
+        {% endif %} 
+
+    </body>
+</html> 
